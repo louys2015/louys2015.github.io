@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+	*{
+	   margin:0;
+	   padding:0;
+	   list-style:none;
+	  }
+	#box{
+		width:580px; 
+		height:400px; 
+		background:#ccc; 
+		margin:60px auto; 
+		position:relative; 
+		overflow:hidden;
+	}
+	#box ul{ 
+		position:absolute; 
+		left:0; 
+		top:0;
+	}
+	#box ul li{ 
+		width:600px; 
+		height:400px; 
+		float:left; 
+		
+	}
+
+	#box ol{ 
+		position:absolute; 
+		width:430px; 
+		left:50%; 
+		margin-left:-215px; 
+		bottom:10px;
+	}
+	#box ol li{ 
+		width:80px; 
+		height:20px; 
+		background:#000; 
+		float:left; 
+		margin:3px; 
+		position:relative;
+	}
+	#box ol li span{
+		 position:absolute; 
+		 left:0; 
+		 width:0px; 
+		 background:#fff; 
+		 top:0; 
+		 height:100%;
+	}
+
+</style>
+<script src="JS/move.js"></script>
+<script>
+	window.onload=function(){
+	var oBox=document.getElementById('box');
+	var oUl=oBox.children[0];
+	var aLi=oUl.children;
+	var oOl=oBox.children[1];
+	var aBtn=oOl.children;
+
+	var aSpan=oOl.getElementsByTagName('span');
+
+	oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+
+	var n=0;
+	
+	function next(){
+		for(i=0;i<aSpan.length;i++){
+			aSpan[i].style.width=0;	
+		}
+		move(aSpan[n],{width:80},{complete:function(){
+
+			n++;
+
+			if(n==aSpan.length){
+				n=0;	
+			}
+
+			move(oUl,{left:-n*aLi[0].offsetWidth},{complete:next});	
+
+		}})	
+	}
+
+   next();
+
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<ul>
+    	<li style="background:url(IMG/e1.png) no-repeat;background-size:cover;"></li>
+        <li style="background:url(IMG/e2.png) no-repeat;background-size:cover;"></li>
+        <li style="background:url(IMG/e3.png) no-repeat;background-size:cover;"></li>
+        <li style="background:url(IMG/e4.png) no-repeat;background-size:cover;"></li>
+        <li style="background:url(IMG/e5.png) no-repeat;background-size:cover;"></li>
+    </ul>
+    <ol>
+    	<li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+    </ol>
+</div>
+
+</body>
+</html>

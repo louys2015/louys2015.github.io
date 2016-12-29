@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+	div{
+		width:600px;
+		height:400px;
+		background:url(IMG/mine.png) no-repeat;
+		background-size:cover;
+		margin:50px auto;
+		-webkit-mask:-webkit-radial-gradient(20px 30px,circle,red 50px,rgba(0,0,0,0) 100px);
+	}
+</style>
+</head>
+
+<body>
+<div id="box"></div>
+<script>
+	var oBox=document.getElementById('box');
+	oBox.onmousemove=function({clientX,clientY}){
+		oBox.style.WebkitMask = `-webkit-radial-gradient(${clientX-oBox.offsetLeft}px ${clientY-oBox.offsetTop}px,circle,red 50px,rgba(0,0,0,0) 100px)`
+	}
+</script>
+</body>
+</html>

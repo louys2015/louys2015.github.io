@@ -1,0 +1,174 @@
+header{
+	width:100%;
+	height:60px;
+	box-sizing:border-box;
+	border-bottom:1px solid #00b7ed;
+	position:relative;
+}
+header h1{
+	width:235px;
+	height:60px;
+	margin:auto;
+	font-family:'Times New Roman';
+}
+header h1 a{
+	display:block;
+	text-align:center;
+	line-height:60px;
+	color:#00b7ed;
+	font-size:40px;
+	
+}
+header h1 a span{
+	font-size:25px;
+	margin-left:6px;
+}
+
+.menu{
+	width:60px;
+	height:60px;
+	background-color:#00b7ed;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;
+	z-index:2;
+}
+.menu a{
+	position:relative;
+	display:inline-block;
+	width:14px;
+	height:20px;
+	margin:17px 0 0 23px;
+}
+.menu a span{
+	width:14px;
+	height:2px;
+	display:inline-block;
+	border-radius:1px;
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#fff;
+}
+.menu a span:nth-child(2){
+	top:6px;
+}
+.menu a span:nth-child(3){
+	top:12px;
+}
+.menu > span{
+	font-size:12px;
+	color:white;
+	text-align:center;
+	display:block;
+}
+
+.close{
+	width:60px;
+	height:60px;
+	background-color:#00b7ed;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;
+	z-index:1;
+}
+.close a{
+	position:relative;
+	width:14px;
+	height:20px;
+	margin:17px 0 0 23px;
+	display:inline-block;
+}
+.close a span{
+	position:absolute;
+	left:0;
+	width:14px;
+	height:2px;
+	border-radius:1px;
+	background-color:white;
+	display:inline-block;
+	transform:rotate(-45deg);
+	transition:0.5s;
+}
+
+.close a span:nth-child(2){
+	transform:rotate(45deg);
+}
+.close:hover a span{
+	transform:rotate(360deg);
+}
+.close > span{
+	font-size:12px;
+	color:white;
+	text-align:center;
+	display:block;
+}
+
+.nav_box{
+	width:266px;
+	height:643px;
+	background-color:#00b7ed;
+	position:fixed;
+	top:0;
+	left:-266px;
+	z-index:2;
+}
+.nav_box ul{
+	width:208px;
+	height:300px;
+	margin-top:70px ;
+	margin-left:29px;
+}
+.nav_box ul li{
+	width:100%;
+	height:56px;
+	border-bottom:1px solid #6CF;
+}
+.nav_box a{
+	display:block;
+	line-height:56px;
+	text-align:center;
+	color:white;
+	font-size:16px;
+	font-family:'MyWebFont';
+	font-weight: bold;
+	letter-spacing: 0.2em;
+	transition:0.3s;
+}
+.nav_box li:hover a{
+	color:#900;
+	transform:rotate(20deg);
+}
+
+.overlay{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background-color:rgba(255,255,255,0.5);
+	display:none;
+}
+.nav_box .lianluo{
+	width:208px;
+	height:250px;
+	margin-left:29px;
+	position:relative;
+	cursor:pointer;
+}
+.nav_box .lianluo img{
+	width:120px;
+	height:120px;
+	margin-left:44px;
+	margin-top:40px;
+}
+.nav_box .lianluo div{
+	color:white;
+	font-size:20px;
+	position:absolute;
+	bottom:50px;
+	left:60px;
+}
+

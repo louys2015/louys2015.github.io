@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+	body{
+			background-color: black;
+			perspective: 2000px;
+			transform-style: preserve-3d;
+		}
+
+		.container{
+			width: 40px;
+			height: 50px;
+			margin: 200px auto;
+			position: relative;
+			transform-style: preserve-3d;
+			transition: 100s linear;
+		}
+
+		.container:active{
+			transform: rotateY(11320deg);
+		}
+
+		.block{
+			width: 40px;
+			height: 50px;
+			border: 1px solid rgb(255,255,255);
+			border-radius: 3px;
+			transform: translate(-300px,300px) scale(3);
+			position: absolute;
+		}
+</style>
+</head>
+
+<body>
+<div class="container">
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+	</div>
+    
+    <script>
+    	var aBlock = document.querySelectorAll('.block');
+
+		aBlock.forEach(function(oBlock,index){
+			oBlock.style.transition = `0.3s ${index*0.05}s`
+			oBlock.style.transform = `rotateY(${index*36}deg) translateZ(100px) translateY(${(index+0.2)*7-200}px)`;
+		})
+
+		document.onclick = function(){
+			aBlock.forEach(function(oBlock,index){
+				oBlock.style.transition = `0.3s`
+
+				var level = parseInt(index/16);
+				var row = parseInt(index%16/4);
+				var col = parseInt(index%16%4);
+
+				oBlock.style.transform = `translateX(${((col+1)-2.5)*52}px) translateY(${((row+1)-2.5)*64}px) translateZ(${(2.5-(level+1))*100}px)`;
+			})
+		}
+    </script>
+</body>
+</html>

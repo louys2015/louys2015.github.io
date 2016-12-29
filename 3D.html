@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+	body{
+		perspective:2000px;
+		transform-style:preserve-3d;
+		background:url(IMG/bj4.jpg) no-repeat;
+		background-size:cover;
+		height:410px;
+	}
+	.container{
+		width:100px;
+		height:160px;
+		margin:130px auto;
+		position:relative;
+		transform-style:preserve-3d;
+		transform:rotateX(-20deg);
+	}
+	.block{
+		width:100px;
+		height:160px;
+		position:absolute;
+		left:0;
+		top:0;
+		border-radius:10px;
+		box-shadow:0 0 20px grey;
+		background-size:cover;
+	}
+	.shadow{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: -170px;
+		left: 0;
+		transform: scale(1,-1);
+		border-radius: 10px;
+		-webkit-mask:linear-gradient(rgba(0,0,0,0) 60%,rgba(0,0,0,0.8));
+		background-size:cover;
+	}
+	
+</style>
+</head>
+
+<body>
+<div class="container"></div>
+
+<script>
+	var oContainer = document.querySelector('.container');
+
+		var amount = 10;
+
+		var deltaRotateX = 0;
+		var deltaRotateY = 50;
+
+		var speedX = 0;
+		var speedY = 0;
+
+		var lastX = 0;
+		var lastY = 0;
+
+		var timer = null;
+
+		for( var i = 0;i<amount;i++ ){
+			var oDiv = document.createElement('div');
+				oDiv.classList.add('block');
+
+				oDiv.style.transition = `.2s ${0.1*(amount-i)}s`;
+				oDiv.style.backgroundImage = `url(IMG/hua${i+1}.png)`;
+
+			var oShadow = document.createElement('div');
+				oShadow.classList.add('shadow');
+
+				oShadow.style.backgroundImage = `url(IMG/hua${i+1}.png)`;
+
+
+			oDiv.appendChild(oShadow);
+
+				(function(ele,index){
+					setTimeout(function(){
+						ele.style.transform = `rotateY(${index*360/amount}deg) translateZ(200px)`
+					})
+				})(oDiv,i);
+
+				oContainer.appendChild(oDiv);
+		}
+
+		var aBlock = document.querySelectorAll('.block');
+
+		aBlock[0].addEventListener('transitionend',function(){
+
+			aBlock.forEach(function(oBlock,index){
+				var deg = index*360/amount;
+
+				oBlock.style.transition = `1s`;
+				oBlock.style.opacity = Math.abs(deg-180)/180 + 0.3;
+			})
+
+		},false)
+
+
+		document.onmousedown = function({clientX,clientY}){
+
+			clearInterval(timer);
+
+			clearTransition()
+			var disX = clientX - deltaRotateX;
+			var disY = clientY - deltaRotateY;
+
+			document.onmousemove = function({clientX,clientY}){
+
+				var deltaX = clientX - disX;
+				var deltaY = clientY - disY;
+
+				deltaRotateX = deltaX;
+				deltaRotateY = deltaY;
+
+				speedX = deltaX - lastX;
+				speedY = deltaY - lastY;
+
+				lastX = deltaX;
+				lastY = deltaY;
+
+				setPosition();
+			}
+
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup  = null;
+
+
+				timer = setInterval(function(){
+					speedX *= 0.96;
+					speedY *= 0.96;
+
+					deltaRotateX += speedX
+					deltaRotateY += speedY
+
+					setPosition();
+				},16)
+			}
+		}
+
+		function setPosition(){
+			aBlock.forEach(function(oBlock,index){
+				var deg = index*360/amount + 0.4*deltaRotateX;
+
+				oBlock.style.transform = `rotateY(${deg}deg) translateZ(200px)`
+
+				oBlock.style.opacity = Math.abs(Math.abs(deg%360)-180)/180 + 0.3;
+			})
+
+			oContainer.style.transform = `rotateX(${-0.2*deltaRotateY}deg)`
+		}
+
+		function clearTransition(){
+			aBlock.forEach(function(oBlock){
+				oBlock.style.transition = "";
+			})
+		}
+
+</script>
+</body>
+</html>
