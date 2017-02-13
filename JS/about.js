@@ -40,17 +40,7 @@ window.onload=function(){
 	
 	var n=0;
 	
-	/*for(var i=0;i<aBtn.length;i++){
-		aBtn[i].index=i;
-		aBtn[i].onclick=function(){
-			for(var i=0;i<aBtn.length;i++){
-				aBtn[i].className='';
-				oUl.style.transform=`translate(0)`;
-			}
-			this.className='show1';
-			oUl.style.transform=`translate(${this.index*-880}px)`;
-		}
-	}*/
+	
 	
 	function Tab(bbb){
 		for(var i=0;i<aBtn.length;i++){

@@ -72,14 +72,7 @@ window.onload=function(){
 			fnTab(count);
 		}
 		
-		timer=setInterval(next,3000);
 		
-		oContainer.onmouseover=function(){
-			clearInterval(timer);
-		}
-		oContainer.onmouseout=function(){
-			timer=setInterval(next,3000);
-		}
 		
 <!--demo-->
 	var aDemoBox=document.querySelectorAll('.container > section > .demo_box');	
@@ -103,19 +96,4 @@ window.onload=function(){
 	}
 
 
-/*<!--about-->
-	var oUl=document.querySelector('.container > ul');
-	var oOl=document.querySelector('.container > ol');	
-	var aLi=oUl.children;
-	var aBtn=oOl.children;
-	
-	for(var i=0;i<aBtn.length;i++){
-		aBtn[i].index=i;
-		aBtn[i].onclick=function(){
-			for(var i=0;i<aLi.length;i++){
-				aLi[i].style.className=``;
-			}
-			aLi[this.index].style.transform=`translate(-880px)`;
-		}
-	}
-*/}
+}
